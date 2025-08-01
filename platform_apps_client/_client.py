@@ -4,6 +4,7 @@ from types import TracebackType
 import aiohttp
 from yarl import URL
 
+from ._config import AppsClientConfig
 from ._exceptions import AppsApiException
 from ._models import AppInstance
 
@@ -13,13 +14,12 @@ LOGGER = logging.getLogger(__name__)
 class AppsApiClient:
     def __init__(
         self,
-        url: URL,
-        token: str | None = None,
+        config: AppsClientConfig,
         timeout: aiohttp.ClientTimeout = aiohttp.client.DEFAULT_TIMEOUT,
         trace_configs: list[aiohttp.TraceConfig] | None = None,
     ):
-        self._url = url
-        self._token = token
+        self._url = URL(config.url)
+        self._token = config.token
         self._timeout = timeout
         self._trace_configs = trace_configs
 

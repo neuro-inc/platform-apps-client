@@ -3,14 +3,17 @@ from collections.abc import AsyncIterator
 import pytest
 from yarl import URL
 
-from platform_apps_client import AppsApiClient
+from platform_apps_client import AppsApiClient, AppsClientConfig
 
 
 @pytest.fixture
-async def client() -> AsyncIterator[AppsApiClient]:
-    async with AppsApiClient(
-        url=URL("http://platform-apps:8080"),
-    ) as cl:
+def apps_client_config() -> AppsClientConfig:
+    return AppsClientConfig(url="http://platform-apps:8080")
+
+
+@pytest.fixture
+async def client(apps_client_config: AppsClientConfig) -> AsyncIterator[AppsApiClient]:
+    async with AppsApiClient(config=apps_client_config) as cl:
         yield cl
 
 

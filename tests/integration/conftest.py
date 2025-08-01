@@ -2,9 +2,8 @@ from collections.abc import AsyncIterator
 from typing import Any, Callable
 
 import pytest
-from yarl import URL
 
-from platform_apps_client import AppsApiClient
+from platform_apps_client import AppsApiClient, AppsClientConfig
 
 
 @pytest.fixture
@@ -15,7 +14,7 @@ def srv_port(unused_tcp_port_factory: Callable[[], int]) -> int:
 @pytest.fixture
 async def client(srv_port: int) -> AsyncIterator[AppsApiClient]:
     async with AppsApiClient(
-        url=URL(f"http://localhost:{srv_port}"),
+        config=AppsClientConfig(url=f"http://localhost:{srv_port}"),
     ) as cl:
         yield cl
 
