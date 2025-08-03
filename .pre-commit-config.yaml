@@ -46,5 +46,4 @@ ci:
   skip:
   - actionlint-docker
   - check-github-actions
-  - poetry-lock
   - poetry-install
