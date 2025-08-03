@@ -1,2 +1,2 @@
-# platform-apps-client
-Apolo apps client library
+# apolo-apps-client
+Apolo internal client for platform-apps API
