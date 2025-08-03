@@ -1,9 +1,9 @@
-from collections.abc import AsyncIterator
-from typing import Any, Callable
+from collections.abc import AsyncIterator, Callable
+from typing import Any
 
 import pytest
 
-from platform_apps_client import AppsApiClient, AppsClientConfig
+from apolo_apps_client import AppsApiClient, AppsClientConfig
 
 
 @pytest.fixture

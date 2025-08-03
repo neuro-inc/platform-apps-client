@@ -3,7 +3,7 @@ from collections.abc import AsyncIterator
 import pytest
 from yarl import URL
 
-from platform_apps_client import AppsApiClient, AppsClientConfig
+from apolo_apps_client import AppsApiClient, AppsClientConfig
 
 
 @pytest.fixture

@@ -4,7 +4,7 @@ import pytest
 from aiohttp import web
 from aiohttp.pytest_plugin import AiohttpServer
 
-from platform_apps_client import AppInstance, AppsApiClient, AppsApiException
+from apolo_apps_client import AppInstance, AppsApiClient, AppsApiException
 
 
 async def test_get_app(

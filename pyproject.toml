@@ -1,5 +1,5 @@
 [project]
-name = "platform-apps-client"
+name = "apolo-apps-client"
 description = "Apolo internal client for platform-apps API"
 authors = [
     {name = "apolo.us"}
@@ -23,7 +23,7 @@ vcs = "git"
 fix-shallow-repository = true
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+requires = ["poetry-core>=2.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
 build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry.group.dev]
@@ -38,15 +38,20 @@ pytest-cov = "^6.0.0"
 cryptography = "^45.0.4"
 pytest-aiohttp = "^1.1.0"
 
-[tool.black]
-exclude = '''
-/(
-      \.git
-    | venv
-    | __pycache__
-    | \.tox
-)/
-'''
+[tool.ruff.lint]
+select = [
+    "E", "F", "I", "C90", "UP", "B", "ASYNC", "N", "A", "C4", "EM", "FA", "ICN",
+    "G", "PIE", "T20", "PYI", "PT", "RET", "PTH", "T10"
+]
+ignore = [
+  "A003",  # Class attribute "..." is shadowing a Python builtin
+  "N818",
+  "C901",  # ... is too complex
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+lines-after-imports = 2
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

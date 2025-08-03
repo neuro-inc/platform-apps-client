@@ -70,6 +70,19 @@ jobs:
         run: make setup
       - name: Run integration tests
         run: make test_integration
+  check:
+    name: Check
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    needs:
+      - unit_tests
+      - integration_tests
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
   deploy:
     name: Release client
     runs-on: ubuntu-latest

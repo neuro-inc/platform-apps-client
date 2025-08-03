@@ -8,6 +8,7 @@ from ._config import AppsClientConfig
 from ._exceptions import AppsApiException
 from ._models import AppInstance
 
+
 LOGGER = logging.getLogger(__name__)
 
 

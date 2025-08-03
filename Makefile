@@ -5,14 +5,13 @@ all test clean:
 
 .PHONY: venv
 venv:
-	poetry lock;
-	poetry install --with dev;
+	poetry install --with dev
 	poetry run pre-commit install;
 
 .PHONY: poetry-plugins
 poetry-plugins:
 	poetry self add "poetry-dynamic-versioning[plugin]"; \
-    poetry self add "poetry-plugin-export";
+	poetry self add "poetry-plugin-export";
 
 .PHONY: setup
 setup: venv poetry-plugins
@@ -26,14 +25,14 @@ endif
 
 .PHONY: lint
 lint: format
-	poetry run mypy platform_apps_client tests
+	poetry run mypy apolo_apps_client tests
 
 
 .PHONY: test_unit
 test_unit:
-	poetry run pytest -svv --cov-config=pyproject.toml --cov-report xml:.coverage-unit.xml tests/unit
+	poetry run pytest -vv --cov-config=pyproject.toml --cov-report xml:.coverage-unit.xml tests/unit
 
 
 .PHONY: test_integration
 test_integration:
-	poetry run pytest -svv --cov-config=pyproject.toml --cov-report xml:.coverage-unit.xml tests/integration
+	poetry run pytest -vv --cov-config=pyproject.toml --cov-report xml:.coverage-unit.xml tests/integration
